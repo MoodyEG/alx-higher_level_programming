@@ -7,5 +7,3 @@ def uppercase(str):
             cap = 0
         print("{:c}".format(ord(str[i]) - cap), end='')
     print()
-
-uppercase("Best School 98 Battery street")
