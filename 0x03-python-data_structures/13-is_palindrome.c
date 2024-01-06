@@ -19,14 +19,11 @@ int is_palindrome(listint_t **head)
 		temp = temp->next;
 		if (temp)
 			if (temp->next)
-				if ((temp->next)->next)
 				{
 					if (a[i] == temp->n && a[i - 1] == (temp->next)->n)
-						if (a[i - 2] == ((temp->next)->next)->n)
-							break;
+						break;
 					if (a[i - 1] == temp->n && a[i - 2] == (temp->next)->n)
-						if (a[i - 3] == ((temp->next)->next)->n)
-							break;
+						break;
 				}
 		i++;
 	}
