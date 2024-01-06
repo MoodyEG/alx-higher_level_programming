@@ -22,8 +22,8 @@ int is_palindrome(listint_t **head)
 			{
 				if (a[i] == temp->n && a[i - 1] == (temp->next)->n)
 					break;
-				if (a[i - 1] == temp->n && a[i - 2] == (temp->next)->n)
-					break;
+				/*if (a[i - 1] == temp->n && a[i - 2] == (temp->next)->n)*/
+					/*break;*/
 			}
 		i++;
 	}
