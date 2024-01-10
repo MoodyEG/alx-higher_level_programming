@@ -27,7 +27,7 @@ void print_python_bytes(PyObject *p)
 		first = 10;
 	else
 		first = size + 1;
-	printf("  first %ld bytes:", size + 1);
+	printf("  first %ld bytes:", first);
 	for (i = 0; i < first; i++)
 	{
 		if (word[i] >= 0)
