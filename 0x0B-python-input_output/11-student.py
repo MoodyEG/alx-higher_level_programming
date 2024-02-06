@@ -1,0 +1,29 @@
+#!/usr/bin/python3
+"""Main module."""
+
+
+class Student:
+    """Class Student that defines a Student's info."""
+    def __init__(self, first_name, last_name, age):
+        """Initialize the Student class."""
+        self.first_name = first_name
+        self.last_name = last_name
+        self.age = age
+
+    def to_json(self, attrs=None):
+        """ A function retrieves a dictionary
+        representation of a Student instance """
+        if type(attrs) is list:
+            disl = {}
+            for i in range(len(attrs)):
+                for j in self.__dict__:
+                    if attrs[i] == j:
+                        disl[j] = self.__dict__[j]
+            return disl
+
+        return self.__dict__
+
+    def reload_from_json(self, json):
+        """ A method that replaces all attributes of the Student instance """
+        for attribute in json:
+            self._dict__[attribute] = json[attribute]
