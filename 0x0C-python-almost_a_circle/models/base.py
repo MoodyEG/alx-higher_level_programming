@@ -38,7 +38,7 @@ class Base:
     def from_json_string(json_string):
         """ Load data from a JSON string """
         if json_string is None:
-            json_string = []
+            json_string = "[]"
         return json.loads(json_string)
 
     @classmethod
