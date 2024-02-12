@@ -2,6 +2,8 @@
 """Base module."""
 import json
 import csv
+import turtle
+import time
 
 
 class Base:
@@ -104,3 +106,31 @@ class Base:
         except FileNotFoundError:
             pass
         return data
+
+    @staticmethod
+    def draw(list_rectangles, list_squares):
+        """ Draw all shapes on the screen """
+        screen = turtle.Screen()
+        screen.bgcolor("black")
+        pen = turtle.Turtle()
+        pen.penup()
+        pen.color("blue")
+        for rectangle in list_rectangles:
+            pen.pendown()
+            for i in range(2):
+                pen.forward(rectangle.width)
+                pen.right(90)
+                pen.forward(rectangle.height)
+                pen.right(90)
+            pen.penup()
+            pen.forward(rectangle.width + 24)
+        pen.color("purple")
+        for square in list_squares:
+            pen.pendown()
+            for i in range(4):
+                pen.forward(square.size)
+                pen.right(90)
+            pen.penup()
+            pen.forward(square.size + 24)
+        time.sleep(2)
+        screen.bye()
