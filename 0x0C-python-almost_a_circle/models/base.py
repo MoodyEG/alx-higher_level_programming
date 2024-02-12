@@ -56,11 +56,10 @@ class Base:
         filename = "{}.json".format(cls.__name__)
         datalist = []
         try:
-            with open(filename,'r') as file:
+            with open(filename, 'r') as file:
                 filelist = cls.from_json_string(file.read())
             for obj in range(len(filelist)):
                 datalist.append(cls.create(**filelist[obj]))
-        except:
+        except FileNotFoundError:
             pass
         return datalist
-
