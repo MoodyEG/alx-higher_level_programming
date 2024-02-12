@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """Rectangle module."""
-from base import Base
+from models.base import Base
 
 
 class Rectangle(Base):
@@ -109,6 +109,7 @@ class Rectangle(Base):
             print()
 
     def __str__(self):
+        """ String representation of Rectangle  """
         return "[Rectangle] ({}) {}/{} \
 - {}/{}".format(self.id, self.__x, self.__y, self.__width, self.__height)
 
@@ -121,3 +122,11 @@ class Rectangle(Base):
         else:
             for key in kwargs:
                 setattr(self, key, kwargs[key])
+
+    def to_dictionary(self):
+        """ Method that returns the dictionary representation """
+        attrs = ['id', 'width', 'height', 'x', 'y']
+        dict = {}
+        for key in attrs:
+            dict[key] = getattr(self, key)
+        return dict
