@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 """Base module."""
 import json
+import csv
 
 
 class Base:
@@ -64,3 +65,42 @@ class Base:
         except FileNotFoundError:
             pass
         return datalist
+
+    @classmethod
+    def save_to_file_csv(cls, list_objs):
+        """ Save the content of a list to a CSV file """
+        filename = "{}.csv".format(cls.__name__)
+        with open(filename, 'w', newline='') as file:
+            writer = csv.writer(file)
+            for data in list_objs:
+                if cls.__name__ == "Rectangle":
+                    writer.writerow([data.id, data.width, data.height,
+                                     data.x, data.y])
+                if cls.__name__ == "Square":
+                    writer.writerow([data.id, data.size,
+                                     data.x, data.y])
+
+    @classmethod
+    def load_from_file_csv(cls):
+        """ Load objects from a CSV file
+        had AI help for that"""
+        filename = "{}.csv".format(cls.__name__)
+        if cls.__name__ == "Rectangle":
+            keys = ['id', 'width', 'height', 'x', 'y']
+        elif cls.__name__ == "Square":
+            keys = ['id', 'size', 'x', 'y']
+        data = []
+        try:
+            with open(filename, 'r') as file:
+                readerlist = list(csv.reader(file))
+            datalist = []
+            for rl in readerlist:
+                datadict = {}
+                for row in enumerate(rl):
+                    datadict[keys[row[0]]] = int(row[1])
+                datalist.append(datadict)
+            for i in range(len(datalist)):
+                data.append(cls.create(**datalist[i]))
+        except FileNotFoundError:
+            pass
+        return data
