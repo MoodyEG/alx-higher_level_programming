@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-from rectangle import Rectangle
+from models.rectangle import Rectangle
 import unittest
 from contextlib import redirect_stdout
 import io
