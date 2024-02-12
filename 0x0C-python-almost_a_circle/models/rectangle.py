@@ -22,13 +22,13 @@ class Rectangle(Base):
         if not isinstance(x, int):
             raise TypeError("x must be an integer")
         elif not x >= 0:
-            raise ValueError("x must be > 0")
+            raise ValueError("x must be >= 0")
         else:
             self.__x = x
         if not isinstance(y, int):
             raise TypeError("y must be an integer")
         elif not y >= 0:
-            raise ValueError("y must be > 0")
+            raise ValueError("y must be >= 0")
         else:
             self.__y = y
         super().__init__(id)
