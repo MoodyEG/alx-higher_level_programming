@@ -9,7 +9,7 @@ class test_rectangleinit(unittest.TestCase):
     """ Testing rectangle class """
     def test_1_rectangle(self):
         """ Testing if attributes are set correctly in rectangle"""
-        a = Rectangle(10,20,30,40,50)
+        a = Rectangle(10, 20, 30, 40, 50)
         self.assertEqual(a.width, 10)
         self.assertEqual(a.height, 20)
         self.assertEqual(a.x, 30)
@@ -140,7 +140,7 @@ class test_rectangleinit(unittest.TestCase):
     def test_13_rectangle(self):
         """ Testing kwargs """
         a = Rectangle(1, 1, 1, 1, 1)
-        a.update(id = 6, x=2, y=3, height =4, width=5)
+        a.update(id=6, x=2, y=3, height=4, width=5)
         self.assertEqual(a.id, 6)
         self.assertEqual(a.x, 2)
         self.assertEqual(a.y, 3)
@@ -152,7 +152,7 @@ class test_rectangleinit(unittest.TestCase):
         a = Rectangle(1, 1, 1, 1, 1)
         a.update(hi=10, dude="bruh")
         self.assertEqual(a.__str__(), "[Rectangle] (1) 1/1 - 1/1")
-    
+
     def test_15_rectangle(self):
         """ Testing to_dectionary """
         a = Rectangle(1, 2, 3, 4, 5)

@@ -9,7 +9,7 @@ class test_squareinit(unittest.TestCase):
     """ Testing Square class """
     def test_1_square(self):
         """ Testing if attributes are set correctly in square"""
-        a = Square(20,30,40,50)
+        a = Square(20, 30, 40, 50)
         self.assertEqual(a.size, 20)
         self.assertEqual(a.x, 30)
         self.assertEqual(a.y, 40)
@@ -127,7 +127,7 @@ class test_squareinit(unittest.TestCase):
     def test_13_square(self):
         """ Testing kwargs """
         a = Square(1, 1, 1, 1)
-        a.update(id = 6, x=2, y=3, size =4)
+        a.update(id=6, x=2, y=3, size=4)
         self.assertEqual(a.id, 6)
         self.assertEqual(a.x, 2)
         self.assertEqual(a.y, 3)
@@ -138,7 +138,7 @@ class test_squareinit(unittest.TestCase):
         a = Square(1, 1, 1, 1)
         a.update(hi=10, dude="bruh")
         self.assertEqual(a.__str__(), "[Square] (1) 1/1 - 1")
-    
+
     def test_15_square(self):
         """ Testing to_dectionary """
         a = Square(2, 3, 4, 5)
@@ -147,7 +147,3 @@ class test_squareinit(unittest.TestCase):
         c = Square(6, 6, 6, 6)
         c.update(**b)
         self.assertEqual(c.__str__(), a.__str__())
-
-
-if  __name__ == '__main__':
-    unittest.main()
