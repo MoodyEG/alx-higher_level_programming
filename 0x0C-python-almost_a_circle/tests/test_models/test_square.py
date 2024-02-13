@@ -1,163 +1,153 @@
 #!/usr/bin/python3
-from models.rectangle import Rectangle
+from models.square import Square
 import unittest
 from contextlib import redirect_stdout
 import io
 
 
-class test_rectangleinit(unittest.TestCase):
-    """ Testing rectangle class """
-    def test_1_rectangle(self):
-        """ Testing if attributes are set correctly in rectangle"""
-        a = Rectangle(10,20,30,40,50)
-        self.assertEqual(a.width, 10)
-        self.assertEqual(a.height, 20)
+class test_squareinit(unittest.TestCase):
+    """ Testing Square class """
+    def test_1_square(self):
+        """ Testing if attributes are set correctly in square"""
+        a = Square(20,30,40,50)
+        self.assertEqual(a.size, 20)
         self.assertEqual(a.x, 30)
         self.assertEqual(a.y, 40)
         self.assertEqual(a.id, 50)
 
-    def test_2_rectangle(self):
+    def test_2_square(self):
         """ Testing error for negative arguments """
         with self.assertRaises(ValueError):
-            a = Rectangle(-1, 1, 1, 1)
+            a = Square(-1, 1, 1)
         with self.assertRaises(ValueError):
-            a = Rectangle(1, -1, 1, 1)
+            a = Square(1, -1, 1)
         with self.assertRaises(ValueError):
-            a = Rectangle(1, 1, -1, 1)
-        with self.assertRaises(ValueError):
-            a = Rectangle(1, 1, 1, -1)
+            a = Square(1, 1, -1)
 
-    def test_3_rectangle(self):
+    def test_3_square(self):
         """ Testing error for missing arguments """
         with self.assertRaises(TypeError):
-            a = Rectangle()
+            a = Square()
 
-    def test_4_rectangle(self):
+    def test_4_square(self):
         """ Testing error for too many arguments """
         with self.assertRaises(TypeError):
-            a = Rectangle(1, 1, 1, 1, 1, 1, 1, 1, 1, 1)
+            a = Square(1, 1, 1, 1, 1, 1, 1, 1, 1, 1)
 
-    def test_4_rectangle(self):
+    def test_4_square(self):
         """ Testing error for TypeError """
         with self.assertRaises(TypeError):
-            a = Rectangle("Hi", 1, 1, 1)
+            a = Square("Hi", 1, 1)
         with self.assertRaises(TypeError):
-            a = Rectangle(1, "Hi", 1, 1)
+            a = Square(1, [], 1)
         with self.assertRaises(TypeError):
-            a = Rectangle(1, 1, "Hi", 1)
-        with self.assertRaises(TypeError):
-            a = Rectangle(1, 1, 1, "Hi")
+            a = Square(1, 1, {})
 
-    def test_5_rectangle(self):
+    def test_5_square(self):
         """ Testing setter """
-        a = Rectangle(1, 1, 1, 1)
-        a.width = 10
-        a.height = 20
+        a = Square(1, 1, 1)
+        a.size = 20
         a.x = 30
         a.y = 40
-        self.assertEqual(a.width, 10)
-        self.assertEqual(a.height, 20)
+        self.assertEqual(a.size, 20)
         self.assertEqual(a.x, 30)
         self.assertEqual(a.y, 40)
 
-    def test_6_rectangle(self):
+    def test_6_square(self):
         """ Testing setter type errors """
-        a = Rectangle(1, 1, 1, 1)
+        a = Square(1, 1, 1)
         with self.assertRaises(TypeError):
-            a.width = "Hi"
-        with self.assertRaises(TypeError):
-            a.height = []
+            a.size = "Hi"
         with self.assertRaises(TypeError):
             a.x = {}
         with self.assertRaises(TypeError):
             a.y = ()
 
-    def test_6_rectangle(self):
+    def test_6_square(self):
         """ Testing setter value errors """
-        a = Rectangle(1, 1, 1, 1)
+        a = Square(1, 1, 1)
         with self.assertRaises(ValueError):
-            a.width = -1
-        with self.assertRaises(ValueError):
-            a.height = -1
+            a.size = -1
         with self.assertRaises(ValueError):
             a.x = -1
         with self.assertRaises(ValueError):
             a.y = -1
 
-    def test_7_rectangle(self):
+    def test_7_square(self):
         """ Testing area """
-        a = Rectangle(10, 20)
-        self.assertEqual(a.area(), 200)
+        a = Square(20)
+        self.assertEqual(a.area(), 400)
 
-    def test_8_rectangle(self):
+    def test_8_square(self):
         """ Testing display """
-        a = Rectangle(1, 1, 1, 1)
+        a = Square(1, 1, 1, 1)
         expected_output = "\n #\n"
         with io.StringIO() as buf, redirect_stdout(buf):
             a.display()
             output = buf.getvalue()
         self.assertEqual(output, expected_output)
 
-    def test_9_rectangle(self):
+    def test_9_square(self):
         """ Testing __str__ method """
-        a = Rectangle(1, 2, 3, 4, 5)
-        self.assertEqual(a.__str__(), "[Rectangle] (5) 3/4 - 1/2")
+        a = Square(2, 3, 4, 5)
+        self.assertEqual(a.__str__(), "[Square] (5) 3/4 - 2")
 
-    def test_10_rectangle(self):
+    def test_10_square(self):
         """ Testing update """
-        a = Rectangle(1, 1, 1, 1, 1)
+        a = Square(1, 1, 1, 1)
         a.update(89)
         self.assertEqual(a.id, 89)
-        a.update(89, 2)
-        self.assertEqual(a.width, 2)
-        a.update(89, 2, 3)
-        self.assertEqual(a.height, 3)
-        a.update(89, 2, 3, 4)
+        a.update(89, 3)
+        self.assertEqual(a.size, 3)
+        a.update(89, 3, 4)
         self.assertEqual(a.x, 4)
-        a.update(89, 2, 3, 4, 5)
+        a.update(89, 3, 4, 5)
         self.assertEqual(a.y, 5)
 
-    def test_11_rectangle(self):
+    def test_11_square(self):
         """ Testing private attributes """
-        a = Rectangle(1, 2, 3, 4, 5)
+        a = Square(2, 3, 4, 5)
         with self.assertRaises(AttributeError):
             print(a.__width)
         with self.assertRaises(AttributeError):
-            print(a.__height)
+            print(a.__size)
         with self.assertRaises(AttributeError):
             print(a.__x)
         with self.assertRaises(AttributeError):
             print(a.__y)
 
-    def test_12_rectangle(self):
+    def test_12_square(self):
         """ Test bad args with update """
-        a = Rectangle(1, 1, 1, 1, 1)
+        a = Square(1, 1, 1, 1)
         with self.assertRaises(ValueError):
             a.update(1, -1)
         with self.assertRaises(TypeError):
             a.update([], {})
 
-    def test_13_rectangle(self):
+    def test_13_square(self):
         """ Testing kwargs """
-        a = Rectangle(1, 1, 1, 1, 1)
-        a.update(id = 6, x=2, y=3, height =4, width=5)
+        a = Square(1, 1, 1, 1)
+        a.update(id = 6, x=2, y=3, size =4)
         self.assertEqual(a.id, 6)
         self.assertEqual(a.x, 2)
         self.assertEqual(a.y, 3)
-        self.assertEqual(a.width, 5)
-        self.assertEqual(a.height, 4)
+        self.assertEqual(a.size, 4)
 
-    def test_14_rectangle(self):
+    def test_14_square(self):
         """ Testing bad kwargs """
-        a = Rectangle(1, 1, 1, 1, 1)
+        a = Square(1, 1, 1, 1)
         a.update(hi=10, dude="bruh")
-        self.assertEqual(a.__str__(), "[Rectangle] (1) 1/1 - 1/1")
+        self.assertEqual(a.__str__(), "[Square] (1) 1/1 - 1")
     
-    def test_15_rectangle(self):
+    def test_15_square(self):
         """ Testing to_dectionary """
-        a = Rectangle(1, 2, 3, 4, 5)
+        a = Square(2, 3, 4, 5)
         b = a.to_dictionary()
         self.assertEqual(type(b), dict)
-        c = Rectangle(6, 6, 6, 6, 6)
+        c = Square(6, 6, 6, 6)
         c.update(**b)
         self.assertEqual(c.__str__(), a.__str__())
+
+
+if  __name__ == '__main__':
+    unittest.main()
