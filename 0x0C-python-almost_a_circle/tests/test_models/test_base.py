@@ -36,8 +36,8 @@ class test_baseinit(unittest.TestCase):
         d = {'x': 2, 'width': 10, 'id': 1, 'height': 7, 'y': 8}
         ds = Base.to_json_string([d])
         self.assertIsInstance(ds, str)
-        self.assertEqual(ds, '[{"x": 2, "width": 10, "id": 1,\
-                         "height": 7, "y": 8}]')
+        dstr = '[{"x": 2, "width": 10, "id": 1, "height": 7, "y": 8}]'
+        self.assertEqual(ds, dstr)
         d1 = None
         ds1 = Base.to_json_string(d1)
         self.assertEqual(ds1, '[]')
