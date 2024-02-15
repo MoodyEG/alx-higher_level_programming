@@ -28,12 +28,12 @@ def matrix_mul(m_a, m_b):
                 raise TypeError("m_b should contain only integers or floats")
     ln = 0
     for lists in m_a:
-        if ln !=0 and ln != len(lists):
+        if ln != 0 and ln != len(lists):
             raise TypeError("each row of m_a must be of the same size")
         ln = len(lists)
     ln = 0
     for lists in m_b:
-        if ln !=0 and ln != len(lists):
+        if ln != 0 and ln != len(lists):
             raise TypeError("each row of m_b must be of the same size")
         ln = len(lists)
     if len(m_a[0]) != len(m_b):
