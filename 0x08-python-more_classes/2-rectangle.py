@@ -4,6 +4,9 @@
 
 class Rectangle:
     """ Class to defines a rectangle """
+    number_of_instances = 0
+    print_symbol = "#"
+
     def __init__(self, width=0, height=0):
         """ Initializes the Rectangle """
         if not isinstance(width, int):
@@ -18,6 +21,7 @@ class Rectangle:
             raise ValueError("height must be >= 0")
         else:
             self.__height = height
+        Rectangle.number_of_instances += 1
 
     @property
     def width(self):
@@ -55,4 +59,6 @@ class Rectangle:
 
     def perimeter(self):
         """ Calculates the perimeter """
+        if self.width == 0 or self.height == 0:
+            return 0
         return 2 * (self.height + self.width)
