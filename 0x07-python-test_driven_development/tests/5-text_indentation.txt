@@ -1,0 +1,36 @@
+The ``5-text_indentation`` module
+============================
+
+Using ``text_indentation(size)``
+---------------------
+
+Importing function from the module:
+
+    >>> text_indentation = __import__('5-text_indentation').text_indentation
+
+Normal test:
+
+    >>> text_indentation("""Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quonam modo?""")
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+    <BLANKLINE>
+    Quonam modo?
+    <BLANKLINE>
+
+Passing non string:
+
+    >>> text_indentation(123)
+    Traceback (most recent call last):
+        ...
+    TypeError: text must be a string
+
+Passing a string with blank line:
+
+    >>> text_indentation("""\n""")
+    <BLANKLINE>
+
+Passing no Arg
+
+    >>> text_indentation()
+    Traceback (most recent call last):
+        ...
+    TypeError: text_indentation() missing 1 required positional argument: 'text'
