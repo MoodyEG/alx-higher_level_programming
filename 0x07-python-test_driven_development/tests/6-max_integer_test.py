@@ -30,4 +30,4 @@ class TestMaxInteger(unittest.TestCase):
 
     def test_6_max(self):
         """ Empty list """
-        self.assertEqual(max_integer([2]), None)
+        self.assertEqual(max_integer([]), None)
