@@ -1,4 +1,4 @@
-The ``101-lazy_lazy_matrix_mul`` module
+The ``101-lazy_matrix_mul`` module
 ============================
 
 Using ``lazy_matrix_mul(m_a, m_b)``
@@ -6,7 +6,7 @@ Using ``lazy_matrix_mul(m_a, m_b)``
 
 Importing function from the module:
 
-    >>> lazy_matrix_mul = __import__('101-lazy_lazy_matrix_mul').lazy_matrix_mul
+    >>> lazy_matrix_mul = __import__('101-lazy_matrix_mul').lazy_matrix_mul
 
 Normal test:
 
