@@ -2,6 +2,7 @@
 """ Main Module """
 import sys
 
+
 class Stats:
     """ Class Stats that provide info """
     def __init__(self):
@@ -21,6 +22,7 @@ class Stats:
             if self.dic[key] != 0:
                 print("{}: {:d}".format(key, self.dic[key]))
 
+
 if __name__ == "__main__":
     stats = Stats()
     line_num = 0
@@ -32,7 +34,7 @@ if __name__ == "__main__":
                 line_list = [x for x in line.split(" ") if x.strip()]
                 stats.add_status(line_list[-2])
                 stats.size += int(line_list[-1].strip("\n"))
-            except ValueError:
+            except IndexError:
                 pass
             line_num += 1
     except KeyboardInterrupt:
